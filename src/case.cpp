@@ -1,13 +1,13 @@
 #include "case.hpp"
 
-Case::Case(bool mine)
-  :mine_{mine}
-{
-}
-
 bool Case::mine() const
 {
   return this->mine_;
+}
+
+void Case::mine(bool mine)
+{
+  this->mine_ = mine;
 }
 
 bool Case::clicked() const
