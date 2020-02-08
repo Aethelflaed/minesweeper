@@ -5,7 +5,7 @@ class Case
   public:
     bool mine() const;
     void mine(bool mine);
-    
+
     bool clicked() const;
     void clicked(bool clicked);
 
