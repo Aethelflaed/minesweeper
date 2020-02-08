@@ -63,12 +63,12 @@ void Case::flagged(bool flagged)
   this->flagged_ = flagged;
 }
 
-uint8_t Case::adjacent_mines_number() const
+uint8_t Case::adjacent_mine_number() const
 {
-  return this->adjacent_mines_number_;
+  return this->adjacent_mine_number_;
 }
 
-void Case::adjacent_mines_number(uint8_t number)
+void Case::adjacent_mine_number(uint8_t number)
 {
-  this->adjacent_mines_number_ = number;
+  this->adjacent_mine_number_ = number;
 }
