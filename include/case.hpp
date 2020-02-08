@@ -4,9 +4,14 @@ class Case
 {
   public:
     /**
-     * Set clicked to true and return mine()
+     * Set clicked to true and return mine() if not flagged()
      */
     bool click();
+
+    /**
+     * Set flagged to true if not clicked()
+     */
+    void flag();
 
     bool mine() const;
     void mine(bool mine);

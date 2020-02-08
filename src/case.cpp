@@ -2,8 +2,23 @@
 
 bool Case::click()
 {
-  this->clicked(true);
-  return this->mine();
+  if (this->flagged)
+  {
+    return false;
+  }
+  else
+  {
+    this->clicked(true);
+    return this->mine();
+  }
+}
+
+void Case::flag()
+{
+  if (!this->clicked)
+  {
+    this->flagged(true);
+  }
 }
 
 bool Case::mine() const
