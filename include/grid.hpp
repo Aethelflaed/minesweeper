@@ -19,6 +19,8 @@ class Grid
     bool failed() const;
     bool cleared() const;
 
+    void print() const;
+
   private:
     void flag(unsigned int line, unsigned int column);
     void unflag(unsigned int line, unsigned int column);

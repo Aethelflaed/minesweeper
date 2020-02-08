@@ -1,3 +1,4 @@
+#include <iostream>
 #include "grid.hpp"
 
 Grid::Grid(unsigned int line, unsigned int column, unsigned int mine_number) :
@@ -19,7 +20,7 @@ void Grid::click(unsigned int line, unsigned int column)
   else
   {
     ++this->cleared_case_number_;
-    if (case_.adjacent_mines_number() == 0)
+    if (case_.adjacent_mine_number() == 0)
     {
       /* TODO: clear region */
     }
@@ -77,5 +78,31 @@ bool Grid::failed() const
 bool Grid::cleared() const
 {
 	return this->clear_case_number_ == this->cleared_case_number_;
+}
+
+void Grid::print() const
+{
+  for(const auto& line : grid_)
+  {
+    for(const auto& case_ : line)
+    {
+      std::cout << case_.mine();
+      if (case_.clicked())
+      {
+        std::cout << 'C';
+      }
+      else if(case_.flagged())
+      {
+        std::cout << 'F';
+      }
+      else
+      {
+        std::cout << 'U';
+      }
+      std::cout << +case_.adjacent_mine_number()
+        << "  ";
+    }
+    std::cout << std::endl;
+  }
 }
 
