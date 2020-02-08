@@ -3,6 +3,11 @@
 class Case
 {
   public:
+    /**
+     * Set clicked to true and return mine()
+     */
+    bool click();
+
     bool mine() const;
     void mine(bool mine);
 

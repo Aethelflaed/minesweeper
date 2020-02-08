@@ -1,5 +1,11 @@
 #include "case.hpp"
 
+bool Case::click()
+{
+  this->clicked(true);
+  return this->mine();
+}
+
 bool Case::mine() const
 {
   return this->mine_;
