@@ -11,13 +11,36 @@ Grid::Grid(unsigned int line, unsigned int column, unsigned int mine_number) :
 
 void Grid::click(unsigned int line, unsigned int column)
 {
-  if (at(line, column).click())
+  Case& case_ = at(line, column);
+  if (case_.click())
   {
     this->failed_ = true;
   }
   else
   {
     ++this->cleared_case_number_;
+    if (case_.adjacent_mines_number() == 0)
+    {
+      /* TODO: clear region */
+    }
+  }
+}
+
+void Grid::flag(unsigned int line, unsigned int column)
+{
+  Case& case_ = at(line, column);
+  if (case_.flag())
+  {
+    ++this->flag_number_;
+  }
+}
+
+void Grid::unflag(unsigned int line, unsigned int column)
+{
+  Case& case_ = at(line, column);
+  if (case_.unflag())
+  {
+    --this->flag_number_;
   }
 }
 
@@ -41,6 +64,10 @@ unsigned int Grid::mine_number() const
 	return this->mine_number_;
 }
 
+unsigned int Grid::flag_number() const
+{
+  return this->flag_number_;
+}
 
 bool Grid::failed() const
 {
