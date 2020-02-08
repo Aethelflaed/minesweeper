@@ -2,6 +2,6 @@
 #include "grid.hpp"
 
 int main() {
-  Grid<5, 5> g;
+  Grid g{5, 5, 5};
   return 0;
 }
