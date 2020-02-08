@@ -5,13 +5,24 @@ class Case
   public:
     /**
      * Set clicked to true and return mine() if not flagged()
+     *
+     * If flagged(), return false
      */
     bool click();
 
     /**
-     * Set flagged to true if not clicked()
+     * If not clicked(), return true if flagged() is changed to true.
+     *
+     * Otherwise, return false.
      */
-    void flag();
+    bool flag();
+
+    /**
+     * If not clicked(), return true if flagged() is changed to false.
+     *
+     * Otherwise, return false.
+     */
+    bool unflag();
 
     bool mine() const;
     void mine(bool mine);

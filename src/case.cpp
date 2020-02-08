@@ -2,7 +2,7 @@
 
 bool Case::click()
 {
-  if (this->flagged)
+  if (this->flagged_)
   {
     return false;
   }
@@ -13,12 +13,24 @@ bool Case::click()
   }
 }
 
-void Case::flag()
+bool Case::flag()
 {
-  if (!this->clicked)
+  if (this->clicked_ || this->flagged_)
   {
-    this->flagged(true);
+    return false;
   }
+  this->flagged(true);
+  return true;
+}
+
+bool Case::unflag()
+{
+  if (this->clicked_ || !this->flagged_)
+  {
+    return false;
+  }
+  this->flagged(false);
+  return true;
 }
 
 bool Case::mine() const
