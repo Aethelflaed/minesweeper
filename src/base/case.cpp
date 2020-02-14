@@ -1,4 +1,4 @@
-#include "case.hpp"
+#include "base/case.hpp"
 
 bool Case::click()
 {
