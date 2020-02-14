@@ -8,9 +8,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_compile_options(-Wall -Wextra -pedantic)
 
+include(${CMAKE_BINARY_DIR}/build/conanbuildinfo.cmake)
+conan_basic_setup()
+
 enable_testing()
 
-include_directories(include/)
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
 add_executable(minesweeper src/main.cpp src/grid.cpp src/case.cpp)
 
