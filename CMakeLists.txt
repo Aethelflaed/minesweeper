@@ -13,11 +13,12 @@ add_compile_options(-Wall -Wextra -pedantic)
 include(${CMAKE_BINARY_DIR}/build/conanbuildinfo.cmake)
 conan_basic_setup()
 
-enable_testing()
-
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 add_library(minesweeper_base STATIC src/base/grid.cpp src/base/case.cpp)
 
 add_executable(minesweeper src/main.cpp)
 target_link_libraries(minesweeper minesweeper_base)
+
+enable_testing()
+add_subdirectory(${CMAKE_BINARY_DIR}/test)
