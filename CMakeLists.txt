@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.3)
 project(minesweeper)
+project(minesweeper_base)
 
 # Global C++ configuration
 set(CMAKE_CXX_STANDARD 17)
@@ -8,6 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_compile_options(-Wall -Wextra -pedantic)
 
+# Conan
 include(${CMAKE_BINARY_DIR}/build/conanbuildinfo.cmake)
 conan_basic_setup()
 
@@ -15,6 +17,7 @@ enable_testing()
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
-add_executable(minesweeper src/main.cpp src/grid.cpp src/case.cpp)
+add_library(minesweeper_base STATIC src/base/grid.cpp src/base/case.cpp)
 
-add_test(minesweeper_test minesweeper)
+add_executable(minesweeper src/main.cpp)
+target_link_libraries(minesweeper minesweeper_base)
