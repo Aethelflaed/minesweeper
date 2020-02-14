@@ -35,6 +35,7 @@
 *.app
 
 # CMake
+Makefile
 CMakeFiles/
 CMakeCache.txt
 Testing/
