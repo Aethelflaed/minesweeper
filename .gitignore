@@ -1,4 +1,4 @@
-/bin/
+/build/
 
 # Prerequisites
 *.d
@@ -33,17 +33,3 @@
 *.out
 *.app
 
-# Conan
-conan.lock
-conanbuildinfo.cmake
-conanbuildinfo.txt
-conaninfo.txt
-graph_info.json
-
-# CMake
-Makefile
-CMakeFiles/
-CMakeCache.txt
-Testing/
-cmake_install.cmake
-CTestTestfile.cmake
