@@ -10,7 +10,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_compile_options(-Wall -Wextra -pedantic)
 
 # Conan
-include(${CMAKE_BINARY_DIR}/build/conanbuildinfo.cmake)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
