@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.3)
 project(minesweeper)
 project(minesweeper_base)
 
+# Global configuration; dir for additional CMake modules
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/CMakeModules)
+
 # Global C++ configuration
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -12,6 +15,16 @@ add_compile_options(-Wall -Wextra -pedantic)
 # Conan
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
+
+if(BUILD_TESTING)
+  include(CodeCoverage)
+  append_coverage_compiler_flags()
+  set(COVERAGE_EXCLUDES "/usr/*" "${CONAN_BOOST_ROOT}/*" "${CMAKE_SOURCE_DIR}/test/*")
+  setup_target_for_coverage_lcov(
+    NAME coverage
+    EXECUTABLE make test
+    )
+endif()
 
 # Defines the ./include/ directory as being accessible for includes
 # during compilation
