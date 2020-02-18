@@ -10,7 +10,12 @@ function(create_test file)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG}/test)
 
   add_executable(${test_name} ${file})
-  target_link_libraries(${test_name} minesweeper_base)
+  target_link_libraries(${test_name}
+    # Link against the minesweeper_base code
+    minesweeper_base
+    # Link to boost test framework
+    boost_unit_test_framework
+    )
 
   add_test(
     NAME ${test_name}
