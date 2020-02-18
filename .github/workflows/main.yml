@@ -13,7 +13,7 @@ jobs:
       with:
         python-version: '3.x'
     - name: Install conan
-    - run: pip install conan
+      run: pip install conan
     - name: Install deps and configure
       run: |
         mkdir build
@@ -21,7 +21,7 @@ jobs:
         conan install ..
         cmake -S .. -DCMAKE_BUILD_TYPE=Debug
     - name: Build
-    - run: make
+      run: make
     - name: Test
-    - run: make test
+      run: make test
       
