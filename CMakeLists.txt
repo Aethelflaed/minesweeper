@@ -45,7 +45,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     # https://github.com/linux-test-project/lcov
     setup_target_for_coverage_lcov(
       NAME coverage
-      EXECUTABLE make test
+      EXECUTABLE make test || true
       )
   else()
     message(WARNING "Coverage not enable; install lcov")
