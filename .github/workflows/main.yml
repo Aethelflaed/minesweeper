@@ -18,6 +18,7 @@ jobs:
       run: |
         mkdir build
         cd build
+        conan profile new default
         conan profile update settings.compiler.libcxx=libstdc++11 default
         conan install ..
         cmake -S .. -DCMAKE_BUILD_TYPE=Debug
