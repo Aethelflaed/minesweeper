@@ -9,5 +9,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: ghaction-cmake
-      uses: lpenz/ghaction-cmake@v0.1
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.x'
+    - name: Install conan
+    - run: pip install conan
+    - name: Install deps and configure
+      run: |
+        mkdir build
+        cd build
+        conan install ..
+        cmake -S .. -DCMAKE_BUILD_TYPE=Debug
+    - name: Build
+    - run: make
+    - name: Test
+    - run: make test
+      
