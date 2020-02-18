@@ -13,6 +13,7 @@ BOOST_AUTO_TEST_CASE(click)
 
   c.mine(false);
   BOOST_TEST(!c.click());
+  BOOST_TEST(c.clicked());
 
   c.mine(true);
   BOOST_TEST(c.click());

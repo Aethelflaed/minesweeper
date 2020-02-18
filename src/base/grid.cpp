@@ -27,6 +27,11 @@ void Grid::click(unsigned int line, unsigned int column)
   }
 }
 
+void Grid::toggle_flag(unsigned int line, unsigned int column)
+{
+  throw "Not Implemented";
+}
+
 void Grid::flag(unsigned int line, unsigned int column)
 {
   Case& case_ = at(line, column);
