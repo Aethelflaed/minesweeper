@@ -1,3 +1,7 @@
+# Downloaded from:
+#   https://github.com/bilke/cmake-modules/blob/master/CodeCoverage.cmake
+#
+#
 # Copyright (c) 2012 - 2017, Lars Bilke
 # All rights reserved.
 #
