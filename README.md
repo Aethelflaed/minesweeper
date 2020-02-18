@@ -27,11 +27,7 @@ The actual minesweeper program will be in the build/bin/ directory.
 
 # Testing
 
-To run tests, cmake should be configured with `BUILD_TESTING` option:
-
-```sh
-cmake -S .. -DBUILD_TESTING=ON
-```
+The build should by default happen with `CMAKE_BUILD_TYPE` to `Debug`, enabling testing.
 
 This will create the different tests executables under build/bin/test/.
 
@@ -39,3 +35,6 @@ You can run `make test` to run the tests.
 
 Additionnaly, you can set the `CTEST_OUTPUT_ON_FAILURE` environment variable
 to let CTest output what happened if a test fails.
+
+Additionnaly, if `lcov` is found, `make coverage` runs the tests and provides a
+coverage report in `coverage/`

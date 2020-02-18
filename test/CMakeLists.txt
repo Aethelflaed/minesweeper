@@ -7,7 +7,7 @@ function(create_test file)
   get_filename_component(test_name ${file} NAME_WE)
 
   # Append /test to the output directory
-  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/test)
+  set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG}/test)
 
   add_executable(${test_name} ${file})
   target_link_libraries(${test_name} minesweeper_base)
@@ -15,7 +15,7 @@ function(create_test file)
   add_test(
     NAME ${test_name}
     COMMAND ${test_name}
-    WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+    WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG}
     )
 endfunction()
 
