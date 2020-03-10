@@ -1,5 +1,5 @@
 #include <iostream>
-#include "grid.hpp"
+#include "base/grid.hpp"
 
 int main() {
   Grid g{5, 5, 5};

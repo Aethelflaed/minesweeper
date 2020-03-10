@@ -1,5 +1,5 @@
 #include <iostream>
-#include "grid.hpp"
+#include "base/grid.hpp"
 
 Grid::Grid(unsigned int line, unsigned int column, unsigned int mine_number) :
   line_{line},
@@ -25,6 +25,11 @@ void Grid::click(unsigned int line, unsigned int column)
       /* TODO: clear region */
     }
   }
+}
+
+void Grid::toggle_flag(unsigned int line, unsigned int column)
+{
+  throw "Not Implemented";
 }
 
 void Grid::flag(unsigned int line, unsigned int column)
