@@ -5,22 +5,22 @@ Grid::Grid(unsigned int line, unsigned int column, unsigned int mine_number) :
   line_{line},
   column_{column},
   mine_number_{mine_number},
-  grid_{line, std::vector<Case>{column}},
-  clear_case_number_{line * column - mine_number}
+  grid_{line, std::vector<Square>{column}},
+  clear_square_number_{line * column - mine_number}
 {
 }
 
 void Grid::click(unsigned int line, unsigned int column)
 {
-  Case& case_ = at(line, column);
-  if (case_.click())
+  Square& square = at(line, column);
+  if (square.click())
   {
     this->failed_ = true;
   }
   else
   {
-    ++this->cleared_case_number_;
-    if (case_.adjacent_mine_number() == 0)
+    ++this->cleared_square_number_;
+    if (square.adjacent_mine_number() == 0)
     {
       /* TODO: clear region */
     }
@@ -34,8 +34,8 @@ void Grid::toggle_flag(unsigned int line, unsigned int column)
 
 void Grid::flag(unsigned int line, unsigned int column)
 {
-  Case& case_ = at(line, column);
-  if (case_.flag())
+  Square& square = at(line, column);
+  if (square.flag())
   {
     ++this->flag_number_;
   }
@@ -43,14 +43,14 @@ void Grid::flag(unsigned int line, unsigned int column)
 
 void Grid::unflag(unsigned int line, unsigned int column)
 {
-  Case& case_ = at(line, column);
-  if (case_.unflag())
+  Square& square = at(line, column);
+  if (square.unflag())
   {
     --this->flag_number_;
   }
 }
 
-Case& Grid::at(unsigned int line, unsigned int column)
+Square& Grid::at(unsigned int line, unsigned int column)
 {
   return grid_[line][column];
 }
@@ -82,21 +82,21 @@ bool Grid::failed() const
 
 bool Grid::cleared() const
 {
-	return this->clear_case_number_ == this->cleared_case_number_;
+	return this->clear_square_number_ == this->cleared_square_number_;
 }
 
 void Grid::print() const
 {
   for(const auto& line : grid_)
   {
-    for(const auto& case_ : line)
+    for(const auto& square : line)
     {
-      std::cout << case_.mine();
-      if (case_.clicked())
+      std::cout << square.mine();
+      if (square.clicked())
       {
         std::cout << 'C';
       }
-      else if(case_.flagged())
+      else if(square.flagged())
       {
         std::cout << 'F';
       }
@@ -104,7 +104,7 @@ void Grid::print() const
       {
         std::cout << 'U';
       }
-      std::cout << +case_.adjacent_mine_number()
+      std::cout << +square.adjacent_mine_number()
         << "  ";
     }
     std::cout << std::endl;
