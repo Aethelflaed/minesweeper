@@ -1,3 +1,6 @@
+#ifndef BASE_CASE_HPP
+#define BASE_CASE_HPP
+
 #include <cstdint>
 
 class Case
@@ -42,3 +45,5 @@ class Case
     bool flagged_{false};
     uint8_t adjacent_mine_number_{0};
 };
+
+#endif // BASE_CASE_HPP

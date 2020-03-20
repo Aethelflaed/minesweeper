@@ -1,3 +1,6 @@
+#ifndef BASE_GRID_HPP
+#define BASE_GRID_HPP
+
 #include <vector>
 #include "case.hpp"
 
@@ -62,3 +65,4 @@ class Grid
     unsigned int flag_number_{0};
 };
 
+#endif // BASE_GRID_HPP
