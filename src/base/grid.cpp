@@ -104,8 +104,7 @@ void Grid::print() const
       {
         std::cout << 'U';
       }
-      std::cout << +square.adjacent_mine_number()
-        << "  ";
+      std::cout << +square.adjacent_mine_number() << "  ";
     }
     std::cout << std::endl;
   }
