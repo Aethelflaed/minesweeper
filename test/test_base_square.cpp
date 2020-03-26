@@ -1,15 +1,15 @@
-#define BOOST_TEST_MODULE Base::Case
+#define BOOST_TEST_MODULE Base::Square
 #include <boost/test/unit_test.hpp>
-#include "base/case.hpp"
+#include "base/square.hpp"
 
 BOOST_AUTO_TEST_CASE(default_constructible)
 {
-  BOOST_TEST(std::is_default_constructible<Case>::value);
+  BOOST_TEST(std::is_default_constructible<Square>::value);
 }
 
 BOOST_AUTO_TEST_CASE(click)
 {
-  Case c;
+  Square c;
 
   c.mine(false);
   BOOST_TEST(!c.click());
@@ -24,7 +24,7 @@ BOOST_AUTO_TEST_CASE(click)
 
 BOOST_AUTO_TEST_CASE(flag)
 {
-  Case c;
+  Square c;
 
   BOOST_TEST(c.flag());
   BOOST_TEST(!c.flag());
@@ -38,7 +38,7 @@ BOOST_AUTO_TEST_CASE(flag)
 
 BOOST_AUTO_TEST_CASE(unflag)
 {
-  Case c;
+  Square c;
   c.flagged(true);
 
   BOOST_TEST(c.unflag());

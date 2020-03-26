@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(toggle_flag)
   g.toggle_flag(1, 1);
   BOOST_TEST(!g.at(1, 1).flagged());
 
-  // try to flag a clicked case
+  // try to flag a clicked square
   g.click(1, 2);
   g.toggle_flag(1, 2);
   BOOST_TEST(!g.at(1, 1).flagged());

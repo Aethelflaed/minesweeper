@@ -2,7 +2,7 @@
 #define BASE_GRID_HPP
 
 #include <vector>
-#include "case.hpp"
+#include "square.hpp"
 
 class Grid
 {
@@ -37,7 +37,7 @@ class Grid
     /**
      * Returns a reference to the square designated by {line, column}
      */
-    Case& at(unsigned int line, unsigned int column);
+    Square& at(unsigned int line, unsigned int column);
 
     unsigned int line() const;
     unsigned int column() const;
@@ -57,11 +57,11 @@ class Grid
     unsigned int column_;
     unsigned int mine_number_;
 
-    std::vector<std::vector<Case>> grid_;
+    std::vector<std::vector<Square>> grid_;
 
     bool failed_{false};
-    unsigned int clear_case_number_{0};
-    unsigned int cleared_case_number_{0};
+    unsigned int clear_square_number_{0};
+    unsigned int cleared_square_number_{0};
     unsigned int flag_number_{0};
 };
 

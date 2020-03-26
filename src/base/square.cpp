@@ -1,6 +1,6 @@
-#include "base/case.hpp"
+#include "base/square.hpp"
 
-bool Case::click()
+bool Square::click()
 {
   if (this->flagged_)
   {
@@ -13,7 +13,7 @@ bool Case::click()
   }
 }
 
-bool Case::flag()
+bool Square::flag()
 {
   if (this->clicked_ || this->flagged_)
   {
@@ -23,7 +23,7 @@ bool Case::flag()
   return true;
 }
 
-bool Case::unflag()
+bool Square::unflag()
 {
   if (this->clicked_ || !this->flagged_)
   {
@@ -33,42 +33,42 @@ bool Case::unflag()
   return true;
 }
 
-bool Case::mine() const
+bool Square::mine() const
 {
   return this->mine_;
 }
 
-void Case::mine(bool mine)
+void Square::mine(bool mine)
 {
   this->mine_ = mine;
 }
 
-bool Case::clicked() const
+bool Square::clicked() const
 {
   return this->clicked_;
 }
 
-void Case::clicked(bool clicked)
+void Square::clicked(bool clicked)
 {
   this->clicked_ = clicked;
 }
 
-bool Case::flagged() const
+bool Square::flagged() const
 {
   return this->flagged_;
 }
 
-void Case::flagged(bool flagged)
+void Square::flagged(bool flagged)
 {
   this->flagged_ = flagged;
 }
 
-uint8_t Case::adjacent_mine_number() const
+uint8_t Square::adjacent_mine_number() const
 {
   return this->adjacent_mine_number_;
 }
 
-void Case::adjacent_mine_number(uint8_t number)
+void Square::adjacent_mine_number(uint8_t number)
 {
   this->adjacent_mine_number_ = number;
 }

@@ -1,9 +1,9 @@
-#ifndef BASE_CASE_HPP
-#define BASE_CASE_HPP
+#ifndef BASE_SQUARE_HPP
+#define BASE_SQUARE_HPP
 
 #include <cstdint>
 
-class Case
+class Square
 {
   public:
     /**
@@ -46,4 +46,4 @@ class Case
     uint8_t adjacent_mine_number_{0};
 };
 
-#endif // BASE_CASE_HPP
+#endif // BASE_SQUARE_HPP

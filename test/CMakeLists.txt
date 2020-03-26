@@ -24,5 +24,5 @@ function(create_test file)
     )
 endfunction()
 
-create_test(test_base_case.cpp)
+create_test(test_base_square.cpp)
 create_test(test_base_grid.cpp)
