@@ -25,6 +25,14 @@ class Initializer
 
   protected:
     /**
+     * Set the mines on the grid, given the grid mine number.
+     *
+     * This method does NOT check if a mine has already been set on the game,
+     * calling it in this case would result in an incorrect number of mines.
+     */
+    void set_mines();
+
+    /**
      * Once the mines have been set, call this method to fill the adjacent
      * mine numbers on the remaining squares.
      */

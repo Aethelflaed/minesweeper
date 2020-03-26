@@ -9,6 +9,12 @@ Initializer::Initializer(Grid& grid)
 
 void Initializer::operator() ()
 {
+  set_mines();
+  fill_adjacent_mine_numbers();
+}
+
+void Initializer::set_mines()
+{
   std::random_device rd;
   std::default_random_engine engine(rd());
 
@@ -31,7 +37,6 @@ void Initializer::operator() ()
       ++mine_number;
     }
   }
-  fill_adjacent_mine_numbers();
 }
 
 void Initializer::fill_adjacent_mine_numbers()
