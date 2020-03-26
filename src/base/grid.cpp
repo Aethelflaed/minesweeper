@@ -29,7 +29,15 @@ void Grid::click(unsigned int line, unsigned int column)
 
 void Grid::toggle_flag(unsigned int line, unsigned int column)
 {
-  throw "Not Implemented";
+  Square& square = at(line, column);
+  if (square.flagged())
+  {
+    unflag(line, column);
+  }
+  else
+  {
+    flag(line, column);
+  }
 }
 
 void Grid::flag(unsigned int line, unsigned int column)
