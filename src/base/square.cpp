@@ -40,7 +40,10 @@ bool Square::mine() const
 
 void Square::mine(bool mine)
 {
-  this->mine_ = mine;
+  if (!this->initialized)
+  {
+    this->mine_ = mine;
+  }
 }
 
 bool Square::clicked() const
@@ -70,5 +73,8 @@ uint8_t Square::adjacent_mine_number() const
 
 void Square::adjacent_mine_number(uint8_t number)
 {
-  this->adjacent_mine_number_ = number;
+  if (!this->initialized)
+  {
+    this->adjacent_mine_number_ = number;
+  }
 }

@@ -26,3 +26,4 @@ endfunction()
 
 create_test(test_base_square.cpp)
 create_test(test_base_grid.cpp)
+create_test(test_base_initializer.cpp)
