@@ -53,14 +53,11 @@ class Initializer
      */
     unsigned int mine_to_number(unsigned int x, unsigned int y);
 
-    bool is_initialized(const Square& square) const
-    {
-      return square.initialized;
-    }
-    bool is_initialized(unsigned int x, unsigned int y) const
-    {
-      return is_initialized(grid.at(x, y));
-    }
+    /**
+     * get/set the initialized field on the given square.
+     */
+    bool initialized(const Square& square) const;
+    void initialized(Square& square, bool value);
 
     Grid& grid;
 };

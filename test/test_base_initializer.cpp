@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE(test_call)
       {
         ++mine_number;
       }
-      BOOST_TEST(is_initialized(x, y));
+      BOOST_TEST(initialized(grid.at(x, y)));
     }
   }
 

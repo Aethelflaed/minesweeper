@@ -24,10 +24,10 @@ void Initializer::operator() ()
 
     Square& square = grid.at(line, column);
 
-    if (! square.initialized)
+    if (! initialized(square))
     {
       square.mine(true);
-      square.initialized = true;
+      initialized(square, true);
       ++mine_number;
     }
   }
@@ -41,10 +41,10 @@ void Initializer::fill_adjacent_mine_numbers()
     for (unsigned int y = 0; y < grid.column(); ++y)
     {
       Square& square = grid.at(x, y);
-      if (! square.initialized)
+      if (! initialized(square))
       {
         square.adjacent_mine_number(adjacent_mine_number(x, y));
-        square.initialized = true;
+        initialized(square, true);
       }
     }
   }
@@ -161,3 +161,12 @@ unsigned int Initializer::mine_to_number(unsigned int x, unsigned int y)
   return grid.at(x, y).mine();
 }
 
+bool Initializer::initialized(const Square& square) const
+{
+  return square.initialized;
+}
+
+void Initializer::initialized(Square& square, bool value)
+{
+  square.initialized = value;
+}
