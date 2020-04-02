@@ -4,22 +4,35 @@ using namespace boost::unit_test;
 
 #include "base/initializer.hpp"
 
-#include <memory>     // std::shared_ptr, std::make_shared
-#include <functional> // std::bind
-
 class Tester : public Initializer
 {
   public:
     Grid grid{5, 5, 5};
 
     Tester() :Initializer{grid} {}
+    Tester(Grid& grid) :Initializer{grid} {}
 };
+
+BOOST_AUTO_TEST_CASE(test_factory)
+{
+  Grid grid{5, 5, 5};
+  Initializer::add<Initializer>("default");
+  Initializer::add<Tester>("test");
+
+  auto init1 = Initializer::make(grid);
+  auto init2 = Initializer::make(grid, "test");
+
+  BOOST_CHECK(dynamic_cast<Initializer*>(init1.get()) != nullptr);
+  BOOST_CHECK(dynamic_cast<Tester*>(init2.get()) != nullptr);
+
+  BOOST_CHECK(Initializer::make(grid, "foo") == nullptr);
+}
 
 BOOST_FIXTURE_TEST_SUITE(Base_Initializer, Tester)
 
 BOOST_AUTO_TEST_CASE(test_call)
 {
-  (*this)();
+  this->initialize();
 
   unsigned int mine_number = 0;
 
