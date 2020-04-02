@@ -4,9 +4,6 @@ using namespace boost::unit_test;
 
 #include "base/initializer.hpp"
 
-#include <memory>     // std::shared_ptr, std::make_shared
-#include <functional> // std::bind
-
 class Tester : public Initializer
 {
   public:

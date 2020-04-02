@@ -90,7 +90,8 @@ bool Grid::failed() const
 
 bool Grid::cleared() const
 {
-	return this->clear_square_number_ == this->cleared_square_number_;
+	return failed_ != true &&
+    clear_square_number_ == cleared_square_number_;
 }
 
 void Grid::print() const
