@@ -44,6 +44,10 @@ class Grid
     unsigned int mine_number() const;
     unsigned int flag_number() const;
 
+    /**
+     * Returns true if failed or cleared
+     */
+    bool finished() const;
     bool failed() const;
     bool cleared() const;
 

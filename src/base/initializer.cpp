@@ -2,12 +2,31 @@
 
 #include <random>
 
+std::unordered_map<std::string, std::function<std::unique_ptr<Initializer>(Grid&)>> Initializer::initializers;
+
+std::unique_ptr<Initializer> Initializer::make(Grid& grid)
+{
+  return make(grid, "default");
+}
+
+std::unique_ptr<Initializer> Initializer::make(Grid& grid, const std::string& name)
+{
+  try
+  {
+    return initializers.at(name)(grid);
+  }
+  catch (const std::out_of_range& ex)
+  {
+    return nullptr;
+  }
+}
+
 Initializer::Initializer(Grid& grid)
   :grid(grid)
 {
 }
 
-void Initializer::operator() ()
+void Initializer::initialize()
 {
   set_mines();
   fill_adjacent_mine_numbers();
