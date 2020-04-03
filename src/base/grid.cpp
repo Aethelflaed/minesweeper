@@ -83,6 +83,12 @@ unsigned int Grid::flag_number() const
   return this->flag_number_;
 }
 
+bool Grid::finished() const
+{
+  return this->failed_ ||
+    clear_square_number_ == cleared_square_number_;
+}
+
 bool Grid::failed() const
 {
 	return this->failed_;

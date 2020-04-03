@@ -4,34 +4,41 @@
 Game::Game(unsigned int line, unsigned int column, unsigned int mine_number)
   :grid_{line, column, mine_number}
 {
-  Initializer{grid_}();
+  Initializer::make(grid_)->initialize();
 }
 
 bool Game::click(unsigned int line, unsigned int column)
 {
+  if (grid_.finished())
+  {
+    return true;
+  }
+
   start_if_not_started();
 
   grid_.click(line, column);
 
   ++click_count_;
 
-  if (grid_.failed())
+  if (grid_.finished())
   {
     end_ = std::chrono::system_clock::now();
-    return true;
-  }
-  else if (grid_.cleared())
-  {
-    cleared_ = true;
-    end_ = std::chrono::system_clock::now();
-    return true;
-  }
 
-  return false;
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 unsigned int Game::toggle_flag(unsigned int line, unsigned int column)
 {
+  if (grid_.finished())
+  {
+    return 0;
+  }
+
   start_if_not_started();
 
   grid_.toggle_flag(line, column);
@@ -43,18 +50,17 @@ unsigned int Game::toggle_flag(unsigned int line, unsigned int column)
 
 bool Game::started() const
 {
-  return start_.time_since_epoch() == duration_t::zero();
+  return start_.time_since_epoch() != duration_t::zero();
 }
 
 bool Game::failed() const
 {
-  return cleared_ == false &&
-    end_.time_since_epoch() == duration_t::zero();
+  return grid_.failed();
 }
 
 bool Game::cleared() const
 {
-  return cleared_;
+  return grid_.cleared();
 }
 
 Game::time_point Game::start() const
