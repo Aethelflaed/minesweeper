@@ -65,7 +65,7 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 #   $<TARGET_OBJECTS:minesweeper_base>
 #
 # https://cmake.org/cmake/help/v3.0/command/add_library.html
-add_library(minesweeper_base STATIC src/base/grid.cpp src/base/square.cpp src/base/initializer.cpp)
+add_library(minesweeper_base STATIC src/base/grid.cpp src/base/square.cpp src/base/initializer.cpp src/base/game.cpp)
 
 # Add the minesweeper executable itself
 add_executable(minesweeper src/main.cpp)
